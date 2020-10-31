@@ -1,8 +1,20 @@
 <template>
     <div class="container">
-        <Widget>
+        <h1>
+            Title
+        </h1>
+        <Widget
+            product="0987654321"
+            shop-id="1234"
+        >
             click here!
         </Widget>
+        <section>
+            <h2>Next title</h2>
+            <p>
+                Description...
+            </p>
+        </section>
     </div>
 </template>
 

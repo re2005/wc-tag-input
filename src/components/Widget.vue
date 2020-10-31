@@ -1,20 +1,30 @@
 <template>
-    <div class="container">
+    <div>
         <transition name="fade">
             <div
                 v-if="show"
-                class="modal"
-            >
-                <div class="content">
-                    Content ...
-                </div>
+                class="container">
                 <div
-                    @click="show = false"
-                    class="backdrop"
-                />
+                    class="modal"
+                >
+                    <div class="content">
+                        Hello!
+                        <pre>
+                        Shop: {{ shopId }}
+                        Product: {{ product }}
+                    </pre>
+                    </div>
+                    <div
+                        @click="show = false"
+                        class="backdrop"
+                    />
+                </div>
             </div>
         </transition>
-        <div @click="open">
+        <div
+            @click="open"
+            class="open"
+        >
             <slot />
         </div>
     </div>
@@ -28,7 +38,8 @@
     })
     export default class extends Vue {
         show: any = false;
-        @Prop({ default: 'default value' }) private msg!: string;
+        @Prop() shopId!: string;
+        @Prop() product!: string;
 
         created() {
             console.log('created');
@@ -36,7 +47,6 @@
 
         open() {
             this.show = true;
-            // debugger;
         }
     }
 </script>
@@ -67,7 +77,6 @@
     .container {
         z-index: 200;
         position: fixed;
-        background: white;
         left: 0;
         right: 0;
         bottom: 0;
@@ -98,5 +107,10 @@
         top: 0;
         right: 0;
         bottom: 0;
+        cursor: pointer;
+    }
+
+    .open {
+        cursor: pointer;
     }
 </style>
